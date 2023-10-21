@@ -1,15 +1,17 @@
-const xhr = new XMLHttpRequest();
-var documento;
+var xhr = new XMLHttpRequest();
+var documento = {
+  userId: 200,
+  id: 12,
+  title: "Noticia exclusiva",
+  body: "Desenvolvedor larga o Jquery após descobrir o quão fácil é viver sem ele",
+};
 
-xhr.responseType = "json";
 xhr.onreadystatechange = function () {
-  if (xhr.readyState == 4 && xhr.status == 200) {
-    documento = xhr.response;
-    // documento = JSON.parse(documento);
-    console.log(documento);
+  if (xhr.readyState == 4) {
+    console.log(xhr);
   }
 };
 
-xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1");
+xhr.open("POST", "https://jsonplaceholder.typicode.com/posts");
 
-xhr.send();
+xhr.send(documento);
